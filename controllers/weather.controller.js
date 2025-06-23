@@ -12,7 +12,7 @@ export const getWeather = async (req, res) => {
     const response = await axios.get(url);
     const weather = response.data;
 
-    res.json({
+    res.json({ //used for like what we have want to our response we add many things
       city: weather.name,
       temp: weather.main.temp,
       description: weather.weather[0].description,

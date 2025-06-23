@@ -10,10 +10,10 @@ const userSchema = new mongoose.Schema({
 
 userSchema.pre('save', async function () {
   if (!this.isModified('password')) return;
-  this.password = await bcrypt.hash(this.password, 10);
+  this.password = await bcrypt.hash(this.password, 10); //salt for passowrd encryption and Hashing to make table attacks useless add random hasing to same passwords so same passwords with different hashing.
 });
 
-userSchema.methods.comparePassword = function (plainPassword) {
+userSchema.methods.comparePassword = function (plainPassword) { //Verifies login by comparing password
   return bcrypt.compare(plainPassword, this.password);
 };
 
