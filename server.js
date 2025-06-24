@@ -3,11 +3,12 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.routes.js";
 import weatherRoutes from "./routes/weather.routes.js";
+import cookieParser from "cookie-parser";
 
 dotenv.config();
 
 const app = express();
-
+app.use(cookieParser());
 // Middleware to parse JSON
 app.use(express.json());
 
